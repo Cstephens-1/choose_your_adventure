@@ -9,7 +9,7 @@ const SignUp = () => {
                 placeholder='Enter your username'
                 id='username'
             />
-            <label htmlFor='password'>Passworf:</label>
+            <label htmlFor='password'>Password:</label>
             <input
                 type='password'
                 placeholder='Enter your password'
