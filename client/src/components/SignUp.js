@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignUp = ({setCurrentUser}) => {
 
@@ -54,6 +54,7 @@ const SignUp = ({setCurrentUser}) => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button type='submit'>Sign up</button>
+            <Link to="/">Log In</Link>
         </form>
     );
 };
