@@ -13,7 +13,7 @@ const SignUp = () => {
             <input
                 type='password'
                 placeholder='Enter your password'
-                id='passworf'
+                id='password'
             />
             <button type='submit'>Sign up</button>
         </form>
