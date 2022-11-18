@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom"
-import { useEffect } from "react/cjs/react.production.min"
-import styled from "styled-components"
+// import { Link } from "react-router-dom"
+// import { useEffect } from "react/cjs/react.production.min"
+// import styled from "styled-components"
+
+import NavBar from "./NavBar"
+
  
  
 function Mypage({currentUser}){
@@ -13,6 +16,7 @@ console.log(currentUser)
 
     return(
         <div>
+            <NavBar />
             <h1>test in my page</h1>
         </div>
     )}

@@ -29,7 +29,7 @@ function AuthenticatedApp({ currentUser, setCurrentUser }) {
         <NavBar handleLogout={handleLogout} currentUser={currentUser}/>
       </nav> */}
       <Routes>
-        <Route path="/home" element={<Mypage currentUser={currentUser}/>} />
+        <Route path="/mypage" element={<Mypage currentUser={currentUser}/>} />
         {/* <Route path="/createcharacter" element={<CharCreation />} /> */}
       </Routes>
     </AppStyler>
