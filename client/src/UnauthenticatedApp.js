@@ -1,17 +1,20 @@
-import React from 'react'
-import { Routes, Route} from 'react-router-dom'
-import Login from './components/Login'
-import SignUp from './components/SignUp'
+import React, { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { AppContext } from './App';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
-
-function UnauthenticatedApp({ setCurrentUser }) {
-  return (
-    <Routes>
-      <Route exact path="/" element = {<Login setCurrentUser={setCurrentUser} />} />
-      <Route exact path="/signup" element={<SignUp setCurrentUser={setCurrentUser}/>} />
-      {/* <Redirect to="/" /> */}
-    </Routes>
-  )
+function UnauthenticatedApp() {
+    const { setCurrentUser } = useContext(AppContext);
+    return (
+        <AppContext.Provider value={{ setCurrentUser }}>
+            <Routes>
+                <Route exact path='/' element={<Login />} />
+                <Route exact path='/signup' element={<SignUp />} />
+                {/* <Redirect to="/" /> */}
+            </Routes>
+        </AppContext.Provider>
+    );
 }
 
-export default UnauthenticatedApp
+export default UnauthenticatedApp;
