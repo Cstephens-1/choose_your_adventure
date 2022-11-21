@@ -12,7 +12,9 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [authChecked, setAuthChecked] = useState(false);
 
+
     useEffect(() => {
+        // let isMounted = true;
         fetch('/me', {
             credentials: 'include',
         }).then((res) => {

@@ -8,7 +8,9 @@ function Mypage(){
 
     
     const {currentUser, setCurrentUser} = useContext(AppContext)
-    console.log(currentUser)
+    
+    
+    console.log("currentuser: ", currentUser)
 
 
 const navigate = useNavigate();
@@ -23,6 +25,7 @@ const handleLogout = () => {
         if (res.ok) {
           setCurrentUser(null)
           navigate('/')
+          console.log(currentUser)
         }
       })
   }

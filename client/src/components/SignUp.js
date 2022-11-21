@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { AppContext } from '../App';
 
-const SignUp = ({setCurrentUser}) => {
+const SignUp = () => {
 
+    const {setCurrentUser} = useContext(AppContext)
     const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -35,6 +37,7 @@ const SignUp = ({setCurrentUser}) => {
       })
   }
     return (
+        <AppContext.Provider value={{setCurrentUser, setUsername, setPassword}}>
         <form onSubmit={handleSubmit}>
             <label htmlFor='username'>User name:</label>
             <input
@@ -53,6 +56,7 @@ const SignUp = ({setCurrentUser}) => {
             <button type='submit'>Sign up</button>
             <Link to="/">Log In</Link>
         </form>
+        </AppContext.Provider>
     );
 };
 

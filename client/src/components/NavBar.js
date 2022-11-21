@@ -12,7 +12,6 @@ function NavBar(){
          <SpanStyler>Welcome, {currentUser.username}</SpanStyler>
         <NavBarStyler>
           <NavLink to="/mypage">Home</NavLink>
-          {/* <NavLink to="/createcharacter">Create</NavLink> */}
           <NavLink to="/" onClick={handleLogout}>Logout</NavLink>
         </NavBarStyler>
          </>
