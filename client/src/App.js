@@ -2,6 +2,9 @@ import React, { useState, useEffect, createContext } from 'react';
 import AuthenticatedApp from './AuthenticatedApp';
 import UnauthenticatedApp from './UnauthenticatedApp';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Mypage from './components/Mypage';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 export const AppContext = createContext(null);
 
@@ -33,16 +36,17 @@ function App() {
         >
             <Router>
                 {currentUser ? (
-                    <AuthenticatedApp
+                    <Mypage
                         setCurrentUser={setCurrentUser}
                         currentUser={currentUser}
                         setAuthChecked={setAuthChecked}
                         authChecked={authChecked}
                     />
                 ) : (
-                    <>
-                        <UnauthenticatedApp />
-                    </>
+                        <>
+                            <Login />
+                        </>
+            
                 )}
             </Router>
         </AppContext.Provider>

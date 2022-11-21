@@ -6,6 +6,14 @@ class UsersController < ApplicationController
     render json: users
   end
 
+  def show
+    if current_user
+      render json: current_user, status: :ok
+    else
+      render json: { user: 'not logged in' }, status: :unauthorized
+    end
+  end
+
   def create 
     user = User.create(username: params[:username], password:params[:password])
     render json: user

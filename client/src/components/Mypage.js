@@ -2,21 +2,35 @@
 // import { useEffect } from "react/cjs/react.production.min"
 // import styled from "styled-components"
 
+import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar"
 
  
  
-function Mypage({currentUser}){
+function Mypage({currentUser, setCurrentUser}){
 
 console.log(currentUser)
 
+const navigate = useNavigate();
+const handleLogout = () => {
+    fetch(`/logout`, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+      .then(res => {
+        if (res.ok) {
+          setCurrentUser(null)
+          navigate('/')
+        }
+      })
+  }
 
 
         
 
     return(
         <div>
-            <NavBar />
+            <NavBar handleLogout={handleLogout}/>
             <h1>test in my page</h1>
         </div>
     )}
