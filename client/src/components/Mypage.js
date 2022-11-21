@@ -1,17 +1,19 @@
-// import { Link } from "react-router-dom"
-// import { useEffect } from "react/cjs/react.production.min"
-// import styled from "styled-components"
-
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar"
-
+import {useContext} from "react"
+import { AppContext } from "../App";
  
  
-function Mypage({currentUser, setCurrentUser}){
+function Mypage(){
 
-console.log(currentUser)
+    
+    const {currentUser, setCurrentUser} = useContext(AppContext)
+    console.log(currentUser)
+
 
 const navigate = useNavigate();
+
+//logout of the app
 const handleLogout = () => {
     fetch(`/logout`, {
       method: 'DELETE',
@@ -29,50 +31,13 @@ const handleLogout = () => {
         
 
     return(
+       <AppContext.Provider value={{handleLogout, currentUser}}>
         <div>
-            <NavBar handleLogout={handleLogout}/>
+            <NavBar/>
             <h1>test in my page</h1>
         </div>
+        </AppContext.Provider>
+
     )}
  
 export default Mypage
-
-// const MyClassContainer = styled.div`
-//     display: flexbox;
-//     flex-direction: row;
-// `
-
-// const ClassWrapper = styled.div`
-    /* width: 100vw;
-    height: 100vw;
-    background-color: skyblue;
-    position: fixed;
-    z-index: -1;
-    text-align: center;
-` */
-
-
-
-// const MuscleManWrapper = styled.div`
-//     height: 55vh;
-//     width: 50vw;
-//     background-color: green;
-//     position: absolute;
-//     border-style: solid;
-//     border-width: 2px;
-//     border-style: solid
-// `
-
-// const PieChartWrapper=styled.div`
-//         height: 50vh;
-//         width:50vw;
-//         margin-top: 50vh;
-//         background-color: red;
-//         left: 0px;
-//         position: relative;
-// `
-
-// const TodayStyler=styled.div`
-//         margin-left: 50vw;
-//         text-align: center
-// `

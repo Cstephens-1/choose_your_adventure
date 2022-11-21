@@ -6,8 +6,7 @@ const SignUp = ({setCurrentUser}) => {
     const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-//   const [passwordConfirmation, setPasswordConfirmation] = useState('')
-//   const [name, setName] = useState('')
+
   
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -19,8 +18,6 @@ const SignUp = ({setCurrentUser}) => {
       body: JSON.stringify({
         username,
         password,
-        // password_confirmation: passwordConfirmation,
-        // name: name
       })
     })
       .then(res => {

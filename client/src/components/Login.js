@@ -2,16 +2,13 @@ import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AppContext } from '../App';
 import styled from 'styled-components';
-// import CoachableLogo from "../CoachableLogo1.PNG"
-// import flyingwitch from "../flyingwitch.png"
-// import {useSpring, animated} from "react-spring"
+
 
 function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    // const props = useSpring({to: {opacity: 1}, from: {opacity:0}})
 
     const { setCurrentUser } = useContext(AppContext);
 
@@ -40,14 +37,7 @@ function Login() {
     return (
         <AppWrapper>
             <LoginWrapper>
-                {/* <img src={CoachableLogo} alt="logo"/> */}
-                {/* <div class="witch-image">
-          <img src={flyingwitch} alt="witch decoration"/>
-       </div> */}
-                {/* <animated.h1 style={props}>I will fade in</animated.h1> */}
-                {/* <Redirect to="/" /> */}
                 <FormWrapper onSubmit={handleSubmit}>
-                    {/* <h1>Log In</h1> */}
                     <p>
                         <LabelStyler htmlFor='username'>Username </LabelStyler>
                         <input
@@ -76,9 +66,6 @@ function Login() {
     );
 }
 
-{
-    /* <img src={signupfont} alt="signup"/> */
-}
 
 export default Login;
 
@@ -110,7 +97,7 @@ const ButtonStyler = styled.button`
     &:hover {
         color: white;
         background: black;
-        /* padding-top: 10px; */
+
     }
 `;
 
@@ -126,7 +113,6 @@ const NavLink = styled(Link)`
         color: white;
         background: black;
     }
-    /* position: relative; */
 `;
 
 const LabelStyler = styled.label`

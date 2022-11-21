@@ -1,11 +1,15 @@
+import { useContext } from "react"
 import {Link} from "react-router-dom"
 import styled from "styled-components"
+import { AppContext } from "../App"
 // import Button from 'react-bootstrap/Button';
  
-function NavBar({handleLogout, currentUser}){
+function NavBar(){
+
+ const{currentUser, handleLogout} =useContext(AppContext)
     return(
       <>
-         {/* <SpanStyler>Welcome, {currentUser.username}</SpanStyler> */}
+         <SpanStyler>Welcome, {currentUser.username}</SpanStyler>
         <NavBarStyler>
           <NavLink to="/mypage">Home</NavLink>
           {/* <NavLink to="/createcharacter">Create</NavLink> */}
