@@ -2,18 +2,15 @@ import { useContext, useState } from "react"
 import { AppContext } from "../App"
 
 function CharacterCreate(){
-//characters need: name, save, def, str, health, int, user_id
 
     const{currentUser} =useContext(AppContext)
     const [characterName, setCharacterName] = useState('')
     const [totalStatsAvailable, setTotalStatsAvailable] = useState(25)
     const [health, setHealth] = useState(0)
-    const [str, setStr] = useState(0)
-    const [def, setDef] = useState(0)
-    const [int, setInt] = useState(0)
+    const [strength, setStr] = useState(0)
+    const [defense, setDef] = useState(0)
+    const [intelligence, setInt] = useState(0)
     const [characters, setCharacters] = useState([])
-    console.log(characterName)
-
 
     function fetchCharacters(){
         fetch("http://localhost:3000/characters")
@@ -25,11 +22,11 @@ function CharacterCreate(){
         e.preventDefault()
         const newCharacter = {
             name: characterName,
-            save: 0,
+            savepoint: 0,
             health: health,
-            str: str,
-            def: def,
-            int: int,
+            strength: strength,
+            defense: defense,
+            intelligence: intelligence,
             user_id: currentUser.id
         };
         fetch("http://localhost:3000/characters", {
@@ -39,9 +36,9 @@ function CharacterCreate(){
             },
             body: JSON.stringify(newCharacter)})
             .then(resp=> resp.json())
-            .then(charFromDatabase=> fetchCharacters())
-    }
-
+            .then(charFromDB=>  fetchCharacters())
+    
+}
 
          
 console.log("these are the characters", characters)
@@ -61,37 +58,37 @@ console.log("these are the characters", characters)
 
     function incrementStr(e){
         e.preventDefault()
-        setStr(str + 1)
+        setStr(strength + 1)
         setTotalStatsAvailable(totalStatsAvailable - 1)
     }
 
     function decrementStr(e){
         e.preventDefault()
-        setStr(str - 1)
+        setStr(strength - 1)
         setTotalStatsAvailable(totalStatsAvailable + 1)
     }
 
     function incrementDef(e){
         e.preventDefault()
-        setDef(def + 1)
+        setDef(defense + 1)
         setTotalStatsAvailable(totalStatsAvailable - 1)
     }
 
     function decrementDef(e){
         e.preventDefault()
-        setDef(def - 1)
+        setDef(defense - 1)
         setTotalStatsAvailable(totalStatsAvailable + 1)
     }
 
     function incrementInt(e){
         e.preventDefault()
-        setInt(int + 1)
+        setInt(intelligence + 1)
         setTotalStatsAvailable(totalStatsAvailable - 1)
     }
 
     function decrementInt(e){
         e.preventDefault()
-        setInt(int - 1)
+        setInt(intelligence - 1)
         setTotalStatsAvailable(totalStatsAvailable + 1)
     }
 
@@ -108,15 +105,15 @@ console.log("these are the characters", characters)
                     </div>
                     <div>
                         <label>Strength: </label>
-                        <button onClick={incrementStr}>+</button>{str}<button onClick={decrementStr}>-</button>
+                        <button onClick={incrementStr}>+</button>{strength}<button onClick={decrementStr}>-</button>
                     </div>
                     <div>
                         <label>Defense: </label>
-                        <button onClick={incrementDef}>+</button>{def}<button onClick={decrementDef}>-</button>
+                        <button onClick={incrementDef}>+</button>{defense}<button onClick={decrementDef}>-</button>
                     </div>
                     <div>
                         <label>Intelligence: </label>
-                        <button onClick={incrementInt}>+</button>{int}<button onClick={decrementInt}>-</button>
+                        <button onClick={incrementInt}>+</button>{intelligence}<button onClick={decrementInt}>-</button>
                     </div> 
                     <button>Create Character</button>
             </form>

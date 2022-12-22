@@ -6,6 +6,7 @@ import { AppContext } from './App';
 import CharacterCreate from './components/ChracterCreate';
 import NavBar from './components/NavBar';
 
+
 function AuthenticatedApp() {
 
   const {currentUser, setCurrentUser} = useContext(AppContext)
