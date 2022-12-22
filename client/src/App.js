@@ -13,8 +13,7 @@ export const AppContext = createContext(null);
 function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [authChecked, setAuthChecked] = useState(false);
-    const [counter, setCounter] = useState(0)
-
+    const [counter, setCounter] = useState(0);
 
     useEffect(() => {
         fetch('/me', {
@@ -35,9 +34,11 @@ function App() {
     //     return <div></div>;
     // }
     return (
-        <AppContext.Provider value={{ currentUser, setCurrentUser, authChecked, setAuthChecked}}>
+        <AppContext.Provider
+            value={{ currentUser, setCurrentUser, authChecked, setAuthChecked }}
+        >
             <Router>
-                {currentUser ? ( <AuthenticatedApp />) : (<UnauthenticatedApp />)}
+                {currentUser ? <AuthenticatedApp /> : <UnauthenticatedApp />}
             </Router>
         </AppContext.Provider>
     );
