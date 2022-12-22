@@ -40,19 +40,9 @@ const SignUp = () => {
         <AppContext.Provider value={{setCurrentUser, setUsername, setPassword}}>
         <form onSubmit={handleSubmit}>
             <label htmlFor='username'>User name:</label>
-            <input
-                type='text'
-                placeholder='Enter your username'
-                id='username'
-                onChange={(e) => setUsername(e.target.value)}
-            />
+            <input type='text' placeholder='Enter your username' id='username'onChange={(e) => setUsername(e.target.value)} />
             <label htmlFor='password'>Password:</label>
-            <input
-                type='password'
-                placeholder='Enter your password'
-                id='password'
-                onChange={(e) => setPassword(e.target.value)}
-            />
+            <input type='password' placeholder='Enter your password' id='password' onChange={(e) => setPassword(e.target.value)}/>
             <button type='submit'>Sign up</button>
             <Link to="/">Log In</Link>
         </form>
