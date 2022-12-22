@@ -1,20 +1,22 @@
 import React, { useState, useEffect, createContext } from 'react';
 // import AuthenticatedApp from './AuthenticatedApp';
 import UnauthenticatedApp from './UnauthenticatedApp';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Mypage from './components/Mypage';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import CharacterCreate from './components/ChracterCreate';
+import AuthenticatedApp from './AuthenticatedApp';
 
 export const AppContext = createContext(null);
 
 function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [authChecked, setAuthChecked] = useState(false);
+    const [counter, setCounter] = useState(0)
 
 
     useEffect(() => {
-        // let isMounted = true;
         fetch('/me', {
             credentials: 'include',
         }).then((res) => {
@@ -33,15 +35,9 @@ function App() {
     //     return <div></div>;
     // }
     return (
-        <AppContext.Provider
-            value={{ currentUser, setCurrentUser, authChecked, setAuthChecked }}
-        >
+        <AppContext.Provider value={{ currentUser, setCurrentUser, authChecked, setAuthChecked}}>
             <Router>
-                {currentUser ? (
-                    <Mypage />
-                ) : (
-                     <UnauthenticatedApp />
-                )}
+                {currentUser ? ( <AuthenticatedApp />) : (<UnauthenticatedApp />)}
             </Router>
         </AppContext.Provider>
     );

@@ -12,6 +12,7 @@ function NavBar(){
          <SpanStyler>Welcome, {currentUser.username}</SpanStyler>
         <NavBarStyler>
           <NavLink to="/mypage">Home</NavLink>
+          <NavLink to="/charactercreation">Create a Character</NavLink>
           <NavLink to="/" onClick={handleLogout}>Logout</NavLink>
         </NavBarStyler>
          </>
@@ -25,12 +26,13 @@ export default NavBar
 const NavBarStyler = styled.div`
     background-color: black;
     height: 100vh;
-    width: 15vw;
+    width: 5vw;
     display: flex;
     flex-direction: column;
     position: fixed;
     bottom: 0;
     top: 0;
+    right: 0;
 `
 
 // const ButtonStyler = styled.button`
@@ -47,6 +49,7 @@ font-family: Graduate;
   color: orange;
   text-decoration: none;
   padding:20px;
+  margin-top: 40px;
   &:hover {
     color: white;
     background: navy;
@@ -59,5 +62,6 @@ font-family: Graduate;
   text-decoration: none;
   padding:20px;
   right: 0;
+  top: 0;
   position: absolute;
   `
