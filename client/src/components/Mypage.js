@@ -3,6 +3,7 @@ import NavBar from "./NavBar"
 import {useContext, useEffect, useState} from "react"
 import { AppContext } from "../App";
 import CharacterCreate from "./ChracterCreate";
+import CharacterDetails from "./CharacterDetails";
  
  
 function Mypage(){
@@ -36,14 +37,34 @@ const handleLogout = () => {
     .then(char=> setCharacters(char))
   }
 
-  // useEffect(fetchCharacters, [])
+  useEffect(fetchCharacters, [])
         
+  function mapCharacters(characters){
+    return(
+        characters.map(character =>{
+            return(
+              <AppContext.Provider value={{character, handleDelete, fetchCharacters}}>
+                <CharacterDetails handleDelete={handleDelete}/>
+                </AppContext.Provider>
+            )
+        })
+       
+    )
+}
 
+function handleDelete(character){
+  fetch(`http://localhost:3000/characters/${character.id}`,{ 
+      method: "DELETE"
+  })
+  let charactersRemaining = characters.filter(eachCharacter => eachCharacter.id !== character.id);
+  console.log(charactersRemaining)
+  setCharacters([...charactersRemaining])
+}
     return(
       <>
         <AppContext.Provider value={{handleLogout, currentUser}}>
           <h1>test in my page</h1>
-          {/* <h1>{characters[0].name}</h1> */}
+          {mapCharacters(characters)}
         </AppContext.Provider>
       </>
     )}

@@ -15,7 +15,16 @@ class CharactersController < ApplicationController
         end
     end
 
+    def destroy
+        character = Character.find_by(id: params[:id])
+        if character 
+            character.destroy
+            head :no_content
+        else
+            render json: {error: "character doesn't exist"}, status: :not_found
+        end
+    end
 
 
-    
+
 end
