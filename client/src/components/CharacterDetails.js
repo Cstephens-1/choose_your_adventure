@@ -17,6 +17,13 @@ function CharacterDetails({fetchCharacters, handleDelete}){
         <AppContext.Provider value={{character, handleDelete}}>
         <div>
             <h1>{character.name}</h1>
+            <ul>
+                <li>Health: {character.health}</li>
+                <li>Strength: {character.strength}</li>
+                <li>Defense: {character.defense}</li>
+                <li>Intelligence: {character.intelligence}</li>
+                <li>Current Savepoint: {character.savepoint}</li>
+            </ul>
             <button onClick={deleteThisChar}>Delete</button>
         </div>
         </AppContext.Provider>
