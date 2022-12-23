@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { AppContext } from "../App"
 
 function CharacterCreate(){
@@ -18,6 +19,8 @@ function CharacterCreate(){
         .then(char=> setCharacters(char))
     }
 
+    const navigate = useNavigate()
+
     function createCharacter(e){
         e.preventDefault()
         const newCharacter = {
@@ -36,12 +39,13 @@ function CharacterCreate(){
             },
             body: JSON.stringify(newCharacter)})
             .then(resp=> resp.json())
-            .then(charFromDB=>  fetchCharacters())
-    
-}
+            .then(charFromDB=>  {
+                setCharacters([...characters, charFromDB],
+                    fetchCharacters())
+                    navigate("/mypage")
+})
+    }
 
-         
-console.log("these are the characters", characters)
 
 
     function incrementHealth(e){
