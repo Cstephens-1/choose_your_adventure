@@ -5,6 +5,7 @@ import { useContext, useState } from 'react';
 import { AppContext } from './App';
 import CharacterCreate from './components/ChracterCreate';
 import NavBar from './components/NavBar';
+import Page1 from './components/pages/Page1';
 
 
 function AuthenticatedApp() {
@@ -44,6 +45,7 @@ function AuthenticatedApp() {
         <Routes>
           <Route path ="/mypage" element={<Mypage characters={characters}/>}></Route>
           <Route path="/charactercreation" element={<CharacterCreate />}></Route>
+          <Route path="/page1" element={<Page1 />}></Route>
         </Routes>
       </AppStyler>
     </AppContext.Provider>
