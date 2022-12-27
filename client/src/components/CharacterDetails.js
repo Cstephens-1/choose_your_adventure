@@ -8,6 +8,11 @@ function CharacterDetails({fetchCharacters, handleDelete}){
             handleDelete(character)
         }
 
+        function playGame(){
+            alert(`starting game at ${character.savepoint}`)
+            //navigate to savepoint page
+        }
+
 
 
 
@@ -25,6 +30,7 @@ function CharacterDetails({fetchCharacters, handleDelete}){
                 <li>Current Savepoint: {character.savepoint}</li>
             </ul>
             <button onClick={deleteThisChar}>Delete</button>
+            <button onClick={playGame}>Play</button>
         </div>
         </AppContext.Provider>
     )
