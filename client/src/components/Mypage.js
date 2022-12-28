@@ -44,7 +44,7 @@ const handleLogout = () => {
         characters.map(character =>{
             return(
               <AppContext.Provider value={{character, handleDelete, fetchCharacters}}>
-                <CharacterDetails handleDelete={handleDelete}/>
+                <CharacterDetails handleDelete={handleDelete} character={character}/>
                 </AppContext.Provider>
             )
         })

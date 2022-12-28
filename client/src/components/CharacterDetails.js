@@ -3,22 +3,23 @@ import { useNavigate } from "react-router-dom"
 import { AppContext } from "../App"
 
 function CharacterDetails({fetchCharacters, handleDelete}){
-    const {character, setCharacters} = useContext(AppContext)
-    const[currentChar, setCurrentChar]=useState([])
+    const {character, setCharacter} = useContext(AppContext)
+    
+
     const navigate=useNavigate()
+
     function deleteThisChar(){
             handleDelete(character)
-        }
+    }
 
-        function playGame(){
-            if (character.savepoint === 0){
-                navigate("/page1")
-            } else{
-                /*placeholder:*/alert(`savepoint is at ${character.savepoint}`)
-                //navigate(`/page4{character.savepoint}`)
-            }
+    function playGame(){
+        if (character.savepoint === 0){
+            navigate("/page1", {state:{character:character}})
+        } else{
+            /*placeholder:*/alert(`savepoint is at ${character.savepoint}`)
+            //navigate(`/page${character.savepoint}`)
         }
-
+    }
 
 
 
@@ -35,7 +36,7 @@ function CharacterDetails({fetchCharacters, handleDelete}){
                 <li>Current Savepoint: {character.savepoint}</li>
             </ul>
             <button onClick={deleteThisChar}>Delete</button>
-            <button onClick={playGame}>Play</button>
+            <button onClick={()=>playGame()}>Play</button>
         </div>
         </AppContext.Provider>
     )

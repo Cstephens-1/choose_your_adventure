@@ -15,6 +15,16 @@ class CharactersController < ApplicationController
         end
     end
 
+    def update 
+        character = Character.find_by(id: params[:id])
+        if character
+            character.update(savepoint: params[:savepoint])
+            render json: character
+        else
+            render json: {error: "character doesn't exist"}
+        end
+    end
+
     def destroy
         character = Character.find_by(id: params[:id])
         if character 

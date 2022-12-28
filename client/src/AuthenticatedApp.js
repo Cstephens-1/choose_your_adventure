@@ -12,8 +12,6 @@ function AuthenticatedApp() {
 
   const {currentUser, setCurrentUser} = useContext(AppContext)
   const [characters, setCharacters] = useState([])
-    
-  console.log("currentuser: ", currentUser)
 
   const navigate = useNavigate()
   
